@@ -1,10 +1,14 @@
 #!/usr/bin/env python
-import os
 import sys
 
 
 # TODO update version
 __version__ = "0.0.1"
+
+# INFO version number: (major, minor, micro, releaselevel, and serial)
+# INFO release level is one of ['alpha', 'beta', 'candidate', 'final']
+assert sys.version_info == (3, 13, 2, "final", 0)
+# assert library.__version__ == "1.26.0"
 
 
 def exit(m: str, code: int = 0) -> None:
@@ -28,6 +32,7 @@ This is how you use it!
 def get_args() -> str:
     args = sys.argv[1:]
 
+    # if len(args) <2:
     if not args:
         print_help()
         exit(None, 0)
