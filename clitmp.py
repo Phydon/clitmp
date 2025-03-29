@@ -11,7 +11,7 @@ assert sys.version_info == (3, 13, 2, "final", 0)
 # assert library.__version__ == "1.26.0"
 
 
-def exit(m: str | None = None, code: int = 0) -> None:
+def exit(code: int = 0, m: str | None = None) -> None:
     if m is not None:
         print(m)
 
@@ -21,12 +21,22 @@ def exit(m: str | None = None, code: int = 0) -> None:
 def print_help() -> None:
     usage = f"Usage: {sys.argv[0]} <PATH> <ARGS>\n"
     # TODO update help
-    help = """
-This is how you use it!
-    """[1:-1]
+    help = "This is how you use it!"
 
     print(usage)
     print(help)
+
+
+def error(msg: str) -> None:
+    print("\033[1;31m", end="")
+    print(f"Error: {msg}")
+    print("\033[0m", end="")
+
+
+def info(msg: str) -> None:
+    print("\033[1;32m", end="")
+    print(f"Info: {msg}")
+    print("\033[0m", end="")
 
 
 def get_args() -> list[str]:
@@ -35,14 +45,14 @@ def get_args() -> list[str]:
     # if len(args) <2:
     if not args:
         print_help()
-        exit(0)
+        exit()
 
     if any(map(lambda a: a in args, ["-h", "--help"])):
         print_help()
-        exit(0)
+        exit()
     elif any(map(lambda a: a in args, ["-V", "--version"])):
         print(f"{sys.argv[0]} {__version__}")
-        exit(0)
+        exit()
 
     return args
 
@@ -51,6 +61,8 @@ def get_args() -> list[str]:
 def main() -> None:
     args = get_args()
     print(args)
+    error("Oh no!")
+    info("Interesting")
 
 
 if __name__ == "__main__":
