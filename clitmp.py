@@ -11,7 +11,7 @@ assert sys.version_info == (3, 13, 2, "final", 0)
 # assert library.__version__ == "1.26.0"
 
 
-def exit(m: str, code: int = 0) -> None:
+def exit(m: str | None = None, code: int = 0) -> None:
     if m is not None:
         print(m)
 
@@ -35,14 +35,14 @@ def get_args() -> str:
     # if len(args) <2:
     if not args:
         print_help()
-        exit(None, 0)
+        exit(0)
 
     if any(map(lambda a: a in args, ["-h", "--help"])):
         print_help()
-        exit(None, 0)
+        exit(0)
     elif any(map(lambda a: a in args, ["-V", "--version"])):
         print(f"{sys.argv[0]} {__version__}")
-        exit(None, 0)
+        exit(0)
 
     return args
 
