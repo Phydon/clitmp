@@ -29,7 +29,7 @@ This is how you use it!
     print(help)
 
 
-def get_args() -> str:
+def get_args() -> list[str]:
     args = sys.argv[1:]
 
     # if len(args) <2:
