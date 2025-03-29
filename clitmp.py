@@ -13,7 +13,7 @@ assert sys.version_info == (3, 13, 2, "final", 0)
 
 def exit(m: str, code: int = 0) -> None:
     if m is not None:
-        print(e)
+        print(m)
 
     sys.exit(code)
 
