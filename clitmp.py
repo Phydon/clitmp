@@ -11,9 +11,9 @@ assert sys.version_info == (3, 13, 2, "final", 0)
 # assert library.__version__ == "1.26.0"
 
 
-def exit(code: int = 0, m: str | None = None) -> None:
-    if m is not None:
-        print(m)
+def exit(code: int = 0, msg: str | None = None) -> None:
+    if msg is not None:
+        print(msg)
 
     sys.exit(code)
 
